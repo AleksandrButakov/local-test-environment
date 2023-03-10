@@ -15,6 +15,7 @@ import static listener.CustomAllureListener.withCustomTemplates;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestAPI {
+
     /*
         curl -X 'POST' \
           'https://petstore.swagger.io/v2/store/order' \
