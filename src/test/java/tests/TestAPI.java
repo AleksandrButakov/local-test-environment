@@ -39,8 +39,8 @@ public class TestAPI {
     Response response;
 
     @Test
-    @DisplayName("Swagger Petstore POST test")
-    void swaggerPetstorePostTest() {
+    @DisplayName("Swagger PetStore POST test")
+    void swaggerPetStorePostTest() {
         /* String data = "{ \"id\": 0, " +
                 "\"petId\": 0, " +
                 "\"quantity\": 0, " +
@@ -94,8 +94,8 @@ public class TestAPI {
 
 
     @Test
-    @DisplayName("Swagger Petstore POST test")
-    void swaggerPetstorePostTest02ForEdit() {
+    @DisplayName("Swagger PetStore POST test")
+    void swaggerPetStorePostTest02ForEdit() {
         /* String data = "{ \"id\": 0, " +
                 "\"petId\": 0, " +
                 "\"quantity\": 0, " +
@@ -146,5 +146,7 @@ public class TestAPI {
         assertThat(credentialsResponse.getShipDate()).hasSizeGreaterThan(12);
         assertThat(credentialsResponse.getStatus()).isEqualTo("placed");
     }
+
+    // added new UI test
 
 }
