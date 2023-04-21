@@ -35,6 +35,11 @@ class TestBase {
 //        ));
 //        Configuration.browserCapabilities = capabilities;
 
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = "1920x1080";
+
         ChromeOptions options = new ChromeOptions();
 
         options.setCapability("selenoid:options", new HashMap<String, Object>() {{
@@ -58,22 +63,21 @@ class TestBase {
             put("enableVideo", true);
         }});
 
-
-
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        //capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVideo", true
-        ));
-
-        Configuration.browserCapabilities = capabilities;
-
+        Configuration.browserCapabilities = options;
         Configuration.remote = "http://62.113.108.218:4444/wd/hub";
+
+
+
+
+//        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        //capabilities.setCapability("enableVNC", true);
+//        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+//                "enableVideo", true
+//        ));
+
+        //Configuration.browserCapabilities = capabilities;
+
+
 
     }
 
