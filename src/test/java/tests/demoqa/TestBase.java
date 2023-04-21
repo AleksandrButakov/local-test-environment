@@ -35,6 +35,31 @@ class TestBase {
 //        ));
 //        Configuration.browserCapabilities = capabilities;
 
+        ChromeOptions options = new ChromeOptions();
+
+//        options.setCapability("selenoid:options", new HashMap<String, Object>() {{
+//            /* How to add test badge */
+//            put("name", "Test badge...");
+//
+//            /* How to set session timeout */
+//            put("sessionTimeout", "15m");
+//
+//            /* How to set timezone */
+//            put("env", new ArrayList<String>() {{
+//                add("TZ=UTC");
+//            }});
+//
+//            /* How to add "trash" button */
+//            put("labels", new HashMap<String, Object>() {{
+//                put("manual", "true");
+//            }});
+//
+//            /* How to enable video recording */
+//            put("enableVideo", true);
+//        }});
+
+
+
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         Configuration.baseUrl = "https://demoqa.com";
@@ -43,7 +68,6 @@ class TestBase {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         //capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
                 "enableVideo", true
         ));
 
