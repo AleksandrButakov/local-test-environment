@@ -37,40 +37,18 @@ class TestBase {
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-//        DesiredCapabilities capabilities = new DesiredCapabilities();
-//        capabilities.setCapability("enableVNC", true);
-
-
-
         DesiredCapabilities capabilities = new DesiredCapabilities();
+        //capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
 
-        capabilities.setCapability("selenoid:options", new HashMap<String, Object>() {{
-            /* How to add test badge */
-            put("name", "Test badge...");
-
-            /* How to set session timeout */
-            put("sessionTimeout", "15m");
-
-            /* How to set timezone */
-            put("env", new ArrayList<String>() {{
-                add("TZ=UTC");
-            }});
-
-            /* How to add "trash" button */
-            put("labels", new HashMap<String, Object>() {{
-                put("manual", "true");
-            }});
-
-            /* How to enable video recording */
-            put("enableVideo", true);
-        }});
-
+        Configuration.browserCapabilities = capabilities;
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
 
-        Configuration.browserCapabilities = capabilities;
-        //Configuration.remote = System.getProperty("remote_driver_url", "http://62.113.108.218:4444/wd/hub/");
         Configuration.remote = "http://62.113.108.218:4444/wd/hub";
 
     }
