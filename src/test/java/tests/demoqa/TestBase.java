@@ -24,6 +24,7 @@ class TestBase {
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = "chrome";
+        Configuration.browserVersion = "112.0";
         Configuration.browserSize = "1920x1080";
         Configuration.remote = "http://62.113.108.218:4444/wd/hub";
 
