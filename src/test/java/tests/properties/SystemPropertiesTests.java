@@ -13,28 +13,28 @@ public class SystemPropertiesTests {
 
     @Test
     void simpleProperty1Test() {
-        System.setProperty("browser", "opera");
+        System.setProperty("browser", "chrome");
         String browserName = System.getProperty("browser");
         System.out.println(browserName); // opera
     }
 
     @Test
     void simpleProperty2Test() {
-        String browserName = System.getProperty("browser", "firefox");
+        String browserName = System.getProperty("browser", "chrome");
         System.out.println(browserName); // firefox
     }
 
     @Test
     void simpleProperty3Test() {
-        System.setProperty("browser", "opera");
-        String browserName = System.getProperty("browser", "firefox");
+        System.setProperty("browser", "chrome");
+        String browserName = System.getProperty("browser", "chrome");
         System.out.println(browserName); // opera
     }
 
     @Test
     @Tag("one_property")
     void simpleProperty4Test() {
-        String browserName = System.getProperty("browser", "firefox");
+        String browserName = System.getProperty("browser", "chrome");
         System.out.println(browserName);
         // gradle clean one_property_test
         // firefox
