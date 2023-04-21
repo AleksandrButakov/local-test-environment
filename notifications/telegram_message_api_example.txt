@@ -1,0 +1,21 @@
+BOT_TOKEN 5199334865:AAEXc-iaDLzGx9-N8tgQ75Pg-11uO0651XQ
+CHAT_ID -1001595433835
+
+// Command in many lines (\ as separator)
+curl -X POST \
+     -H 'Content-Type: application/json' \
+     -d '{"chat_id": "-1001595433835", "text": "This is a test from qa.guru"}' \
+     https://api.telegram.org/bot5199334865:AAEXc-iaDLzGx9-N8tgQ75Pg-11uO0651XQ/sendMessage
+
+// link for reading the chat via API
+https://api.telegram.org/bot5199334865:AAEXc-iaDLzGx9-N8tgQ75Pg-11uO0651XQ/getUpdates
+
+// Command in one line
+curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "-1001595433835", "text": "This is a test from qa.guru"}' https://api.telegram.org/bot5199334865:AAEXc-iaDLzGx9-N8tgQ75Pg-11uO0651XQ/sendMessage
+
+// private message
+curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "1531560565", "text": "This is a test from qa.guru"}' https://api.telegram.org/bot5199334865:AAEXc-iaDLzGx9-N8tgQ75Pg-11uO0651XQ/sendMessage
+
+
+
+curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "-1001595433835", "text": "Hello"}' https://api.telegram.org/bot5199334865:AAEXc-iaDLzGx9-N8tgQ75Pg-11uO0651XQ/sendMessage

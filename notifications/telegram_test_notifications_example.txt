@@ -1,0 +1,35 @@
+// Template
+java \
+"-DprojectName=${PROJECT_NAME}" \
+"-Denv=${ENVIRONMENT}" \
+"-DreportLink=${BUILD_URL}" \
+"-Dcomm=Any comment here" \
+"-Dconfig.file=${PATH_TO_FILE}" \
+-jar allure-notifications-3.1.2.jar
+
+// local
+// ${PROJECT_NAME} and ${BUILD_URL} внутренние встроенные системные переменные Jenkins
+// Dconfig.file=${PATH_TO_FILE} нужно прописывать вручную
+java \
+"-DprojectName=Local test run" \
+"-Denv=PROD" \
+"-DreportLink=qa.guru/" \
+"-Dcomm=Any comment here" \
+"-Dconfig.file=notifications/telegram_config.json" \
+-jar notifications/allure-notifications-3.1.2.jar
+
+// комментарии на блок, расположенный выше
+// "-DprojectName=Local test run" \ подпись диаграммы сверху
+// "-Denv=PROD" \ подпись environment
+// "-DreportLink=qa.guru/" \ ссылка на отчет
+// знак \ в конце строки является переносом строки. Не все терминалы могут отрабатывать переносы, лучше
+// располагать этот блок в одну строку
+
+// Jenkins
+java \
+"-DprojectName=${PROJECT_NAME}" \
+"-Denv=${ENVIRONMENT}" \
+"-DreportLink=${BUILD_URL}" \
+"-Dcomm=Any comment here" \
+"-Dconfig.file=notifications/telegram_config.json" \
+-jar notifications/allure-notifications-3.1.2.jar
