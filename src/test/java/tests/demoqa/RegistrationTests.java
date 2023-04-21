@@ -1,5 +1,6 @@
 package tests.demoqa;
 
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.appear;

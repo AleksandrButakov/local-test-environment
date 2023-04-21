@@ -21,6 +21,8 @@ class TestBase {
     @BeforeAll
     static void beforeAll() throws MalformedURLException {
 
+        Configuration.baseUrl = "https://demoqa.com";
+
         ChromeOptions options = new ChromeOptions();
 
         options.setCapability("selenoid:options", new HashMap<String, Object>() {{
