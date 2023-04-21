@@ -37,6 +37,9 @@ class TestBase {
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = "1920x1080";
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         //capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -45,9 +48,6 @@ class TestBase {
         ));
 
         Configuration.browserCapabilities = capabilities;
-
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
 
         Configuration.remote = "http://62.113.108.218:4444/wd/hub";
 
