@@ -7,21 +7,62 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import static javax.swing.UIManager.put;
+import static jdk.internal.org.objectweb.asm.tree.Util.add;
 
 class TestBase {
 
     @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        Configuration.timeout = 10000;
-        Configuration.remote = "https://62.113.108.218/wd/hub";
+    static void beforeAll() throws MalformedURLException {
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        //capabilities.setCapability("enableVideo", true);
-        Configuration.browserCapabilities = capabilities;
+        ChromeOptions options = new ChromeOptions();
+
+        options.setCapability("selenoid:options", new HashMap<String, Object>() {{
+            /* How to add test badge */
+            put("name", "Test badge...");
+
+            /* How to set session timeout */
+            put("sessionTimeout", "15m");
+
+            /* How to set timezone */
+            put("env", new ArrayList<String>() {{
+                add("TZ=UTC");
+            }});
+
+            /* How to add "trash" button */
+            put("labels", new HashMap<String, Object>() {{
+                put("manual", "true");
+            }});
+
+            /* How to enable video recording */
+            put("enableVideo", true);
+        }});
+        RemoteWebDriver driver = new RemoteWebDriver(new URL("http://62.113.108.218:4444/wd/hub"), options);
+
+
+//        Configuration.baseUrl = "https://demoqa.com";
+//        Configuration.browser = "chrome";
+////        Configuration.browserVersion = "100.0";
+//        Configuration.browserSize = "1920x1080";
+//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+//
+//        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+//                "enableVNC", true,
+//                "enableVideo", true
+//        ));
+//
+//        Configuration.browserCapabilities = capabilities;
+
     }
 
     @BeforeEach
