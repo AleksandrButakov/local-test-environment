@@ -21,8 +21,6 @@ class TestBase {
 
     @BeforeAll
     static void beforeAll() throws MalformedURLException {
-//        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-//
 //        Configuration.baseUrl = "https://demoqa.com";
 //        Configuration.browser = "chrome";
 //        Configuration.browserVersion = "112.0";
@@ -39,8 +37,34 @@ class TestBase {
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
+//        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        capabilities.setCapability("enableVNC", true);
+
+
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
+
+        capabilities.setCapability("selenoid:options", new HashMap<String, Object>() {{
+            /* How to add test badge */
+            put("name", "Test badge...");
+
+            /* How to set session timeout */
+            put("sessionTimeout", "15m");
+
+            /* How to set timezone */
+            put("env", new ArrayList<String>() {{
+                add("TZ=UTC");
+            }});
+
+            /* How to add "trash" button */
+            put("labels", new HashMap<String, Object>() {{
+                put("manual", "true");
+            }});
+
+            /* How to enable video recording */
+            put("enableVideo", true);
+        }});
+
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
@@ -53,7 +77,7 @@ class TestBase {
 
     @BeforeEach
     void addListener() {
-        //+SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
     }
 
     @AfterEach
