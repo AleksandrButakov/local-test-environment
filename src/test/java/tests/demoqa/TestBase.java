@@ -40,9 +40,10 @@ class TestBase {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
 
-        ChromeOptions options = new ChromeOptions();
+        //ChromeOptions options = new ChromeOptions();
+        DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        options.setCapability("selenoid:options", new HashMap<String, Object>() {{
+        capabilities.setCapability("selenoid:options", new HashMap<String, Object>() {{
             /* How to add test badge */
             put("name", "Test badge...");
 
@@ -54,16 +55,14 @@ class TestBase {
                 add("TZ=UTC");
             }});
 
-            /* How to add "trash" button */
-            put("labels", new HashMap<String, Object>() {{
-                put("manual", "true");
-            }});
+            put("enableVNC", true);
 
             /* How to enable video recording */
             put("enableVideo", true);
         }});
 
-        Configuration.browserCapabilities = options;
+        Configuration.browserCapabilities = capabilities;
+
         Configuration.remote = "http://62.113.108.218:4444/wd/hub";
 
 
