@@ -21,42 +21,39 @@ class TestBase {
 
     @BeforeAll
     static void beforeAll() throws MalformedURLException {
-
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = "chrome";
-        Configuration.browserVersion = "112.0";
-        Configuration.browserSize = "1920x1080";
-        Configuration.remote = "http://62.113.108.218:4444/wd/hub";
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
-        Configuration.browserCapabilities = capabilities;
-
-
-
+//        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+//
 //        Configuration.baseUrl = "https://demoqa.com";
 //        Configuration.browser = "chrome";
-////        Configuration.browserVersion = "100.0";
+//        Configuration.browserVersion = "112.0";
 //        Configuration.browserSize = "1920x1080";
-       // Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+//        Configuration.remote = "http://62.113.108.218:4444/wd/hub";
 //
 //        DesiredCapabilities capabilities = new DesiredCapabilities();
+//
 //        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
 //                "enableVNC", true,
 //                "enableVideo", true
 //        ));
-//
 //        Configuration.browserCapabilities = capabilities;
+
+
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+
+        capabilities.setCapability("enableVNC", true);
+
+        Configuration.browserCapabilities = capabilities;
+        Configuration.remote = System.getProperty("remote_driver_url", "http://62.113.108.218:4444/wd/hub/");
+
+
 
     }
 
     @BeforeEach
     void addListener() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        //+SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
     @AfterEach
