@@ -16,9 +16,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static javax.swing.UIManager.put;
-import static jdk.internal.org.objectweb.asm.tree.Util.add;
-
 class TestBase {
 
     @BeforeAll
