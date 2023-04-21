@@ -37,18 +37,17 @@ class TestBase {
 //        ));
 //        Configuration.browserCapabilities = capabilities;
 
-
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
 
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = "1920x1080";
+
         Configuration.browserCapabilities = capabilities;
-        Configuration.remote = System.getProperty("remote_driver_url", "http://62.113.108.218:4444/wd/hub/");
-
-
+        //Configuration.remote = System.getProperty("remote_driver_url", "http://62.113.108.218:4444/wd/hub/");
+        Configuration.remote = "http://62.113.108.218:4444/wd/hub";
 
     }
 
