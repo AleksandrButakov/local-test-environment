@@ -39,31 +39,27 @@ class TestBase {
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
+        Configuration.remote = "http://62.113.108.218:4444/wd/hub";
 
         //ChromeOptions options = new ChromeOptions();
         DesiredCapabilities capabilities = new DesiredCapabilities();
-
         capabilities.setCapability("selenoid:options", new HashMap<String, Object>() {{
             /* How to add test badge */
-            put("name", "Test badge...");
+            put("name", "My tests...");
 
             /* How to set session timeout */
             put("sessionTimeout", "15m");
 
             /* How to set timezone */
             put("env", new ArrayList<String>() {{
-                add("TZ=UTC");
+                add("TZ=UTC+5");
             }});
 
+            /* How to enableVNC */
             put("enableVNC", true);
-
-            /* How to enable video recording */
-            put("enableVideo", true);
         }});
-
         Configuration.browserCapabilities = capabilities;
 
-        Configuration.remote = "http://62.113.108.218:4444/wd/hub";
 
 
 
