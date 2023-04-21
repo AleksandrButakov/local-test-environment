@@ -15,6 +15,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 class TestBase {
 
@@ -22,37 +23,25 @@ class TestBase {
     static void beforeAll() throws MalformedURLException {
 
         Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browser = "chrome";
+        Configuration.browserSize = "1920x1080";
+        Configuration.remote = "http://62.113.108.218:4444/wd/hub";
 
-        ChromeOptions options = new ChromeOptions();
+        DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        options.setCapability("selenoid:options", new HashMap<String, Object>() {{
-            /* How to add test badge */
-            put("name", "Test badge...");
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
 
-            /* How to set session timeout */
-            put("sessionTimeout", "15m");
-
-            /* How to set timezone */
-            put("env", new ArrayList<String>() {{
-                add("TZ=UTC");
-            }});
-
-            /* How to add "trash" button */
-            put("labels", new HashMap<String, Object>() {{
-                put("manual", "true");
-            }});
-
-            /* How to enable video recording */
-            put("enableVideo", true);
-        }});
-        RemoteWebDriver driver = new RemoteWebDriver(new URL("http://62.113.108.218:4444/wd/hub"), options);
 
 
 //        Configuration.baseUrl = "https://demoqa.com";
 //        Configuration.browser = "chrome";
 ////        Configuration.browserVersion = "100.0";
 //        Configuration.browserSize = "1920x1080";
-//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+       // Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 //
 //        DesiredCapabilities capabilities = new DesiredCapabilities();
 //        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
