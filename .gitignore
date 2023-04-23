@@ -2,4 +2,7 @@
 /allure-report/
 /.idea/
 /.gradle/
-/notifications/
+/notifications/telegram_config.json
+/notifications/telegram_config_personal.json
+/notifications/telegram_message_api_example.txt
+/notifications/telegram_test_notifications_example.txt
