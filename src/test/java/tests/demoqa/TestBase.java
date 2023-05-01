@@ -39,6 +39,9 @@ class TestBase {
 
             /* How to enableVNC */
             put("enableVNC", true);
+
+            /* How to enable video recording */
+            put("enableVideo", true);
         }});
 
         Configuration.browserCapabilities = capabilities;
